@@ -1,0 +1,6 @@
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86/CMakeFiles/appmodules.dir
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86/CMakeFiles/edit_cache.dir
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86/CMakeFiles/rebuild_cache.dir
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86/safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86/safeareacontext_autolinked_build/CMakeFiles/edit_cache.dir
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86/safeareacontext_autolinked_build/CMakeFiles/rebuild_cache.dir

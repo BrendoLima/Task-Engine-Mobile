@@ -1,0 +1,15 @@
+# ninja log v5
+64	4025	0	C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/arm64-v8a/CMakeFiles/cmake.verify_globs	f3b4b72906431cd
+338	24087	7978792999437312	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/60c9591ff15534101dab139345cf7d8d/jni/react/renderer/components/safeareacontext/States.cpp.o	11a7e02970d271bd
+217	25381	7978793012237334	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/c1444bb2af5d131d112ffbab38a8e7e1/react/renderer/components/safeareacontext/EventEmitters.cpp.o	4b42a91d6a0b6778
+378	25930	7978793017947296	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/909f54ba8431641599196b558cf270fb/generated/source/codegen/jni/safeareacontext-generated.cpp.o	4dfff7d216fb6a
+452	27064	7978793028409388	CMakeFiles/appmodules.dir/OnLoad.cpp.o	a616cac382a28979
+7	36679	7978793125298278	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/40534a77030edb375a8b92a66ae7a085/components/safeareacontext/RNCSafeAreaViewState.cpp.o	7e6c4f62f406f3ff
+397	37458	7978793132559071	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/c1444bb2af5d131d112ffbab38a8e7e1/react/renderer/components/safeareacontext/ShadowNodes.cpp.o	7505ff20c1655517
+246	38028	7978793138711149	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/60c9591ff15534101dab139345cf7d8d/jni/react/renderer/components/safeareacontext/Props.cpp.o	641ae4ef6ba613b1
+157	39111	7978793149601144	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/d49eb18c19bad447fe5134e1e1932d5e/components/safeareacontext/ComponentDescriptors.cpp.o	5bfc0a6300967a91
+592	40134	7978793159665893	CMakeFiles/appmodules.dir/C_/bilioteca/Downloads/TaskEngine/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp.o	7abc0e397ca8e51b
+55	40822	7978793166708800	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/40534a77030edb375a8b92a66ae7a085/components/safeareacontext/RNCSafeAreaViewShadowNode.cpp.o	7d4c7811836a376a
+40823	41164	7978793170303130	C:/bilioteca/Downloads/TaskEngine/android/app/build/intermediates/cxx/Debug/y1bp5env/obj/arm64-v8a/libreact_codegen_safeareacontext.so	b367a320b257e88b
+41164	41325	7978793171981651	C:/bilioteca/Downloads/TaskEngine/android/app/build/intermediates/cxx/Debug/y1bp5env/obj/arm64-v8a/libappmodules.so	b1b0263af4d2a2d5
+43	218	0	C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/arm64-v8a/CMakeFiles/cmake.verify_globs	f3b4b72906431cd

@@ -1,0 +1,15 @@
+# ninja log v5
+5	46	0	C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/armeabi-v7a/CMakeFiles/cmake.verify_globs	b382c27c8dea7d98
+57	8653	7978793343181232	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/60c9591ff15534101dab139345cf7d8d/jni/react/renderer/components/safeareacontext/States.cpp.o	32ef45cae15147fa
+48	11443	7978793371272432	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/6d1a12af83d4f923f0a6f0a768bff3ea/renderer/components/safeareacontext/EventEmitters.cpp.o	8e7fa2be1e8074dc
+66	13090	7978793387152914	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/f6bf5eb7d64f6cf0870ff837c8ee18d1/source/codegen/jni/safeareacontext-generated.cpp.o	245e919c5c264d05
+7	14197	7978793398583155	CMakeFiles/appmodules.dir/OnLoad.cpp.o	72898edba8cb7e4d
+15	16331	7978793420342681	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/40534a77030edb375a8b92a66ae7a085/components/safeareacontext/RNCSafeAreaViewState.cpp.o	a13324037986fa6d
+94	16479	7978793421792641	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/c1444bb2af5d131d112ffbab38a8e7e1/react/renderer/components/safeareacontext/ShadowNodes.cpp.o	c7b692ecb11d36cd
+30	17641	7978793433206492	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/60c9591ff15534101dab139345cf7d8d/jni/react/renderer/components/safeareacontext/Props.cpp.o	b7a5541426f71ea5
+39	17896	7978793435802536	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/d49eb18c19bad447fe5134e1e1932d5e/components/safeareacontext/ComponentDescriptors.cpp.o	54996676882e76eb
+22	19063	7978793447612521	safeareacontext_autolinked_build/CMakeFiles/react_codegen_safeareacontext.dir/40534a77030edb375a8b92a66ae7a085/components/safeareacontext/RNCSafeAreaViewShadowNode.cpp.o	77331e63e3dc59d4
+19064	19292	7978793450012564	C:/bilioteca/Downloads/TaskEngine/android/app/build/intermediates/cxx/Debug/y1bp5env/obj/armeabi-v7a/libreact_codegen_safeareacontext.so	ffbb32ad6bb0b3a8
+1	19618	7978793452948172	CMakeFiles/appmodules.dir/C_/bilioteca/Downloads/TaskEngine/android/app/build/generated/autolinking/src/main/jni/autolinking.cpp.o	2c70577f6e9bd81e
+19619	19773	7978793454901169	C:/bilioteca/Downloads/TaskEngine/android/app/build/intermediates/cxx/Debug/y1bp5env/obj/armeabi-v7a/libappmodules.so	968e174433d5c0e7
+7	67	0	C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/armeabi-v7a/CMakeFiles/cmake.verify_globs	b382c27c8dea7d98

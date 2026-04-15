@@ -1,0 +1,4 @@
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/edit_cache.dir
+C:/bilioteca/Downloads/TaskEngine/android/app/.cxx/Debug/y1bp5env/x86_64/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/rebuild_cache.dir
