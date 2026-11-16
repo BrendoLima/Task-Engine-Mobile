@@ -1,6 +1,11 @@
 pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
 plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'TaskEngine'
+// Evita o "npx": neste Windows o cmd resolve o shim sem extensao de node_modules/.bin
+// e falha com "rnc-cli nao reconhecido". Chamando o binario via node, nao depende de PATH.
+def cliBin = new File(settingsDir, "../node_modules/@react-native-community/cli/build/bin.js").canonicalPath
+extensions.configure(com.facebook.react.ReactSettingsExtension){ ex ->
+  ex.autolinkLibrariesFromCommand(["node", cliBin, "config"])
+}
+rootProject.name = 'com.taskengine.mobile'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
