@@ -250,6 +250,7 @@ Task-Engine-Mobile/
 │   └── images/                    # Screenshots usados neste README
 ├── .github/workflows/ci.yml       # Typecheck + lint + testes no GitHub Actions
 ├── .editorconfig                  # Convenções de indentação/linhas
+├── LICENSE                        # MIT
 └── dist/                          # Artefatos locais (APK, logs, screenshots) — ignorado pelo git
 ```
 
@@ -472,4 +473,4 @@ na inicialização. A persistência é testada indiretamente pelo parse defensiv
 
 ## Licença
 
-MIT. Veja o campo `license` em `package.json`.
+MIT — veja [LICENSE](LICENSE).
