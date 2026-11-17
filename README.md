@@ -16,6 +16,9 @@ status — tudo offline, com os dados salvos no próprio aparelho.
 ![Plataformas](https://img.shields.io/badge/plataformas-Android%20%7C%20iOS-3DDC84?logo=android&logoColor=white)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-blue)
 
+> **APK pronto:** [Task Engine 1.0.0](https://github.com/BrendoLima/Task-Engine-Mobile/releases/tag/v1.0.0)
+> (`task-engine-arm64.apk`, 19,4 MB, arm64-v8a, Android 7+).
+
 ---
 
 ## Índice
