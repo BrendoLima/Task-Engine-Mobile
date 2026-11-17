@@ -1,6 +1,6 @@
 # Mede a fluidez do app release no dispositivo conectado: boot + install + launch + carga de UI,
 # e imprime as estatisticas de frames (jank e percentis) do dumpsys gfxinfo.
-#   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\measure-performance.ps1
+#   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\build\measure-performance.ps1
 #   ... -SkipInstall -Apk dist\task-engine-arm64.apk
 param(
   [string]$Package = "com.taskengine.mobile",
@@ -10,7 +10,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
-$Root = Split-Path -Parent $PSScriptRoot
+$Root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 if (-not $Apk) { $Apk = Join-Path $Root "dist\task-engine-arm64.apk" }
 if (-not $OutDir) { $OutDir = Join-Path $Root "dist" }
 New-Item -ItemType Directory -Force -Path $OutDir | Out-Null

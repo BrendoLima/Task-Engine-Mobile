@@ -17,13 +17,13 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-import {AddTaskBar} from './src/components/AddTaskBar';
-import {EmptyState} from './src/components/EmptyState';
-import {FilterTabs, type TaskFilter} from './src/components/FilterTabs';
-import {TaskItem} from './src/components/TaskItem';
-import {loadTasks, saveTasks} from './src/storage';
-import {colors, radius, spacing} from './src/theme';
-import type {Task} from './src/types';
+import {AddTaskBar} from './components/AddTaskBar';
+import {EmptyState} from './components/EmptyState';
+import {FilterTabs, type TaskFilter} from './components/FilterTabs';
+import {TaskItem} from './components/TaskItem';
+import {loadTasks, saveTasks} from './storage';
+import {colors, radius, spacing} from './theme';
+import type {Task} from './types';
 
 const WEEKDAYS = [
   'domingo',

@@ -1,6 +1,6 @@
 # Diagnostico: sobe o AVD sem as flags extras usadas pelo dev.ps1 e confere se o app abre.
 # Serve para confirmar se o problema de boot e do emulador (advancedFeatures.ini) ou das flags.
-#   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\diagnostics\verify-studio-launch.ps1
+#   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\emulator\diagnostics\verify-studio-launch.ps1
 #   ... -Avd TaskEngine33
 param(
   [string]$Avd = "GalaxyA15",
@@ -9,7 +9,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
-$Root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$Root = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
 $env:ANDROID_AVD_HOME = $AvdHome
 
 $Sdk = $env:ANDROID_HOME

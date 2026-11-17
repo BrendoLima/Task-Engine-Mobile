@@ -14,7 +14,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
-$Root = Split-Path -Parent $PSScriptRoot
+$Root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $Android = Join-Path $Root "android"
 
 function Write-Step([string]$Text) {
@@ -28,7 +28,7 @@ if (-not $Sdk) { $Sdk = $env:ANDROID_SDK_ROOT }
 if (-not $Sdk) { $Sdk = Join-Path $env:LOCALAPPDATA "Android\Sdk" }
 if (-not (Test-Path $Sdk)) { throw "SDK Android nao encontrado em $Sdk" }
 
-. (Join-Path $PSScriptRoot "fix-ninja.ps1")
+. (Join-Path (Split-Path -Parent $PSScriptRoot) "dev\fix-ninja.ps1")
 
 $bt = Get-ChildItem (Join-Path $Sdk "build-tools") -Directory -ErrorAction SilentlyContinue |
   Sort-Object {

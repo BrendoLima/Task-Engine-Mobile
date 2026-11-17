@@ -1,10 +1,10 @@
 # Gera o wallpaper "estilo One UI" (gradiente escuro + blobs suaves) em dist\tools.
-#   pwsh/powershell -File scripts\make-wallpaper.ps1 [-Width 648] [-Height 1404] [-Seed 7]
+#   pwsh/powershell -File scripts\appearance\make-wallpaper.ps1 [-Width 648] [-Height 1404] [-Seed 7]
 param(
   [int]$Width = 648,
   [int]$Height = 1404,
   [int]$Seed = 7,
-  [string]$Out = (Join-Path (Split-Path -Parent $PSScriptRoot) "dist\tools\wallpaper-oneui.png")
+  [string]$Out = (Join-Path (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)) "dist\tools\wallpaper-oneui.png")
 )
 
 Add-Type -AssemblyName System.Drawing

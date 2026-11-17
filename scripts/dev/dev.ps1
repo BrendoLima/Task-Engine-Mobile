@@ -15,7 +15,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
-$Root = Split-Path -Parent $PSScriptRoot
+$Root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $Package = "com.taskengine.mobile"
 $MetroPort = 8081
 
@@ -70,7 +70,7 @@ function Test-Metro {
 
 # O ninja 1.10.2 que acompanha o CMake 3.22.1 do SDK falha neste Windows/projeto
 # com "missing and no known rule to make it" em qualquer arquivo dentro de
-# node_modules. Ensure-Ninja (scripts\fix-ninja.ps1) troca por ninja >= 1.12.
+# node_modules. Ensure-Ninja (scripts\dev\fix-ninja.ps1) troca por ninja >= 1.12.
 . (Join-Path $PSScriptRoot "fix-ninja.ps1")
 
 function Start-Emulator([string]$Name) {
@@ -205,7 +205,7 @@ if (-not $NoOneUI) {
   if ($needsLauncher -or $needsWallpaper) {
     Write-Step "Aparencia One UI (launcher: $needsLauncher, wallpaper: $needsWallpaper)"
     if (-not $needsWallpaper) { $lookArgs += "-SkipWallpaper" }
-    & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "oneui.ps1") @lookArgs
+    & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path (Split-Path -Parent $PSScriptRoot) "appearance\oneui.ps1") @lookArgs
     # adb root (usado pelo wallpaper) reinicia o adbd; espera voltar antes de reabrir o app.
     for ($i = 0; $i -lt 30; $i++) {
       if ((& $Adb get-state 2>$null | Out-String).Trim() -eq "device") { break }

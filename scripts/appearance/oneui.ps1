@@ -4,14 +4,14 @@
 #
 # O "home" preferido nao sobrevive a todo boot frio do AOSP, entao rode isto depois de
 # reiniciar o emulador (ou use junto com npm run dev). O wallpaper e aplicado via
-# WallpaperManager (scripts/set-wallpaper.ps1), sem abrir a galeria.
+# WallpaperManager (scripts\appearance\set-wallpaper.ps1), sem abrir a galeria.
 param(
-  [string]$LauncherApk = (Join-Path (Split-Path -Parent $PSScriptRoot) "dist\tools\lawnchair.apk"),
+  [string]$LauncherApk = (Join-Path (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)) "dist\tools\lawnchair.apk"),
   [switch]$SkipWallpaper
 )
 
 $ErrorActionPreference = "Continue"
-$Root = Split-Path -Parent $PSScriptRoot
+$Root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 
 function Write-Step([string]$Text) {
   Write-Host ""

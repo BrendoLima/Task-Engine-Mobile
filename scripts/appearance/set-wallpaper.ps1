@@ -10,11 +10,11 @@
 # e derrubou o emulador (SwiftShader) mais de uma vez. Aqui o wallpaper e gravado direto
 # pelo servico do sistema, sem UI.
 param(
-  [string]$Image = (Join-Path (Split-Path -Parent $PSScriptRoot) "dist\tools\wallpaper-oneui.png")
+  [string]$Image = (Join-Path (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)) "dist\tools\wallpaper-oneui.png")
 )
 
 $ErrorActionPreference = "Continue"
-$Root = Split-Path -Parent $PSScriptRoot
+$Root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 
 $Sdk = $env:ANDROID_HOME
 if (-not $Sdk) { $Sdk = $env:ANDROID_SDK_ROOT }

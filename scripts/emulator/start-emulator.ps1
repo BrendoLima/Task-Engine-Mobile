@@ -1,5 +1,5 @@
 ﻿# Inicia o AVD configurado para esta maquina.
-# Uso: powershell -NoProfile -ExecutionPolicy Bypass -File scripts\start-emulator.ps1 [-Avd GalaxyA15] [-Headless]
+# Uso: powershell -NoProfile -ExecutionPolicy Bypass -File scripts\emulator\start-emulator.ps1 [-Avd GalaxyA15] [-Headless]
 param(
   [string]$Avd = "GalaxyA15",
   [string]$AvdHome = $(if ($env:ANDROID_AVD_HOME) { $env:ANDROID_AVD_HOME } else { Join-Path $env:USERPROFILE ".android\avd" }),

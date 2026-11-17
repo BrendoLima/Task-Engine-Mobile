@@ -1,5 +1,5 @@
 ﻿# Instala um APK release no dispositivo conectado, abre o app e salva screenshot + dump de UI.
-#   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\install-and-verify.ps1
+#   powershell -NoProfile -ExecutionPolicy Bypass -File scripts\build\install-and-verify.ps1
 #   ... -Apk dist\task-engine-arm64.apk -Package com.taskengine.mobile
 param(
   [string]$Apk,
@@ -8,7 +8,7 @@ param(
 )
 
 $ErrorActionPreference = "Continue"
-$Root = Split-Path -Parent $PSScriptRoot
+$Root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 if (-not $Apk) { $Apk = Join-Path $Root "dist\task-engine-arm64.apk" }
 if (-not $OutDir) { $OutDir = Join-Path $Root "dist" }
 if (-not (Test-Path $Apk)) { throw "APK nao encontrado: $Apk (rode 'npm run apk')" }

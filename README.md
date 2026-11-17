@@ -135,12 +135,13 @@ Todos os comandos abaixo rodam da raiz do projeto.
 | `npm run ios` | `react-native run-ios` (macOS) |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint em todo o projeto |
-| `npm test` | Jest |
+| `npm test` | Jest (config em `config/jest.config.js`) |
+| `npm run format` | Prettier em `src/` e `config/` (config em `config/prettier.config.js`) |
 | `npm run verify` | `typecheck` + `lint` + `test` (o mesmo que a CI roda) |
 
 ### O que `npm run dev` faz
 
-O script `scripts/dev.ps1` executa, em ordem:
+O script `scripts/dev/dev.ps1` executa, em ordem:
 
 1. **Emulador** — reutiliza um dispositivo já conectado (`adb devices`); se não houver, sobe o AVD
    `GalaxyA15` com SwiftShader, sem snapshot, e espera `sys.boot_completed=1`.
@@ -156,11 +157,12 @@ O script `scripts/dev.ps1` executa, em ordem:
 
 Detalhes de implementação relevantes:
 
-- Os scripts chamam `node node_modules\react-native\cli.js` (e `node node_modules\eslint\...`) em vez
-  de `npx react-native`/`eslint`. Neste Windows o `cmd` falha ao executar os shims sem extensão de
-  `node_modules\.bin`. O mesmo ajuste existe em `android/settings.gradle` para o autolinking.
+- Os scripts chamam `node node_modules\react-native\cli.js` (e `node node_modules\eslint\...` com
+  `--config config\.eslintrc.js`) em vez de `npx react-native`/`eslint`. Neste Windows o `cmd` falha
+  ao executar os shims sem extensão de `node_modules\.bin`. O mesmo ajuste existe em
+  `android/settings.gradle` para o autolinking.
 - O build C++ usa o `ninja` que vem com o CMake do SDK. A versão **1.10.2** falha neste projeto com
-  `missing and no known rule to make it`; o `scripts\fix-ninja.ps1` troca por **1.13.1** (baixado uma
+  `missing and no known rule to make it`; o `scripts\dev\fix-ninja.ps1` troca por **1.13.1** (baixado uma
   vez para `dist\tools\ninja.exe`, guardando o original como `ninja.exe.bak`).
 - O primeiro build demora alguns minutos; os seguintes reaproveitam o cache do Gradle/CMake.
 - O emulador fica aberto ao final. `npm run emu:stop` encerra.
@@ -168,10 +170,10 @@ Detalhes de implementação relevantes:
 ## Arquitetura
 
 ```
-App.tsx
+src/App.tsx
 ```
 
-`App.tsx` é a única tela. Pontos principais:
+`src/App.tsx` é a única tela. Pontos principais:
 
 - `SafeAreaProvider` + `SafeAreaView` cuidam de notch e barras; `KeyboardAvoidingView` evita que o
   teclado cubra o campo de nova tarefa.
@@ -217,9 +219,10 @@ Componentes:
 
 ```text
 Task-Engine-Mobile/
-├── App.tsx                        # Tela principal e estado do app
-├── index.js                       # Registro do componente raiz
-├── src/
+├── src/                           # Todo o código e os testes do app
+│   ├── App.tsx                    # Tela principal e estado do app
+│   ├── __tests__/
+│   │   └── App.test.tsx           # Smoke test de renderização
 │   ├── components/
 │   │   ├── AddTaskBar.tsx         # Campo de nova tarefa + botão
 │   │   ├── EmptyState.tsx         # Estados vazios de cada filtro
@@ -228,34 +231,47 @@ Task-Engine-Mobile/
 │   ├── storage.ts                 # Persistência com AsyncStorage
 │   ├── theme.ts                   # Cores, espaçamentos e raios
 │   └── types.ts                   # Tipo Task
-├── __tests__/
-│   └── App.test.tsx               # Smoke test de renderização
+├── config/                        # Configs chamados com --config nos scripts npm
+│   ├── .eslintrc.js               # ESLint
+│   ├── jest.config.js             # Jest (rootDir: ..)
+│   ├── jest.setup.js              # Setup do Jest
+│   └── prettier.config.js         # Prettier (npm run format)
+├── scripts/
+│   ├── dev/
+│   │   ├── dev.ps1                # npm run dev: emulador + Metro + build/install + One UI
+│   │   ├── metro.ps1              # Metro em janela separada (log em dist\metro.log)
+│   │   ├── screen.ps1             # npm run screen: resolução/densidade (411x891 dp)
+│   │   └── fix-ninja.ps1          # Troca o ninja antigo do SDK (usado por dev e apk)
+│   ├── emulator/
+│   │   ├── start-emulator.ps1     # Sobe um AVD com as flags corretas
+│   │   ├── configure-galaxy-a15-avd.ps1 # Ajusta tela/RAM do AVD GalaxyA15
+│   │   └── diagnostics/
+│   │       └── verify-studio-launch.ps1 # Diagnóstico de boot do emulador
+│   ├── appearance/
+│   │   ├── oneui.ps1              # npm run oneui: launcher + wallpaper
+│   │   ├── set-wallpaper.ps1      # npm run wallpaper: aplica o wallpaper sem UI
+│   │   ├── make-wallpaper.ps1     # Gera o PNG do wallpaper estilo One UI
+│   │   └── wallpaper/
+│   │       └── SetWallpaper.java  # Helper (app_process) que chama o WallpaperManager
+│   └── build/
+│       ├── build-apk.ps1          # npm run apk: APK release arm64 para o celular
+│       ├── install-and-verify.ps1 # Instala o APK e valida a tela
+│       └── measure-performance.ps1 # Boot + carga de UI + estatísticas de frames
 ├── android/                       # Projeto Android nativo (Gradle)
 ├── ios/                           # Projeto iOS nativo (CocoaPods)
-├── scripts/
-│   ├── dev.ps1                    # npm run dev: emulador + Metro + build/install + One UI
-│   ├── metro.ps1                  # Metro em janela separada (log em dist\metro.log)
-│   ├── start-emulator.ps1         # Sobe um AVD com as flags corretas
-│   ├── configure-galaxy-a15-avd.ps1 # Ajusta tela/RAM do AVD GalaxyA15
-│   ├── install-and-verify.ps1     # Instala o APK e valida a tela (screenshot + dump de UI)
-│   ├── measure-performance.ps1    # Boot + carga de UI + estatísticas de frames
-│   ├── screen.ps1                 # npm run screen: resolução/densidade (411x891 dp)
-│   ├── set-wallpaper.ps1          # npm run wallpaper: aplica o wallpaper sem UI
-│   ├── make-wallpaper.ps1         # Gera o PNG do wallpaper estilo One UI
-│   ├── oneui.ps1                  # npm run oneui: launcher + wallpaper
-│   ├── build-apk.ps1              # npm run apk: APK release arm64 para o celular
-│   ├── fix-ninja.ps1              # Troca o ninja antigo do SDK (usado por dev e apk)
-│   ├── wallpaper/
-│   │   └── SetWallpaper.java      # Helper (app_process) que chama o WallpaperManager
-│   └── diagnostics/
-│       └── verify-studio-launch.ps1 # Diagnóstico de boot do emulador
 ├── docs/
 │   └── images/                    # Screenshots usados neste README
 ├── .github/workflows/ci.yml       # Typecheck + lint + testes no GitHub Actions
+├── index.js                       # Registro do componente raiz
 ├── .editorconfig                  # Convenções de indentação/linhas
 ├── LICENSE                        # MIT
 └── dist/                          # Artefatos locais (APK, logs, screenshots) — ignorado pelo git
 ```
+
+`index.js`, `app.json`, `babel.config.js`, `metro.config.js`, `tsconfig.json`, `package.json`,
+`Gemfile` e `.watchmanconfig` **continuam na raiz**: Metro, Gradle, TypeScript e o CLI do React
+Native os procuram lá. A pasta `config/` reúne só os arquivos que podem ser apontados com
+`--config` nos scripts (`lint`, `test`, `format`).
 
 Arquivos gerados ficam em `dist/` e **não** são versionados: APK, `metro.log`, screenshots, dump de
 UI e ferramentas baixadas (`lawnchair.apk`, `ninja.exe`, wallpaper).
@@ -276,7 +292,7 @@ Criar o AVD do zero:
 
 ```powershell
 avdmanager create avd -n GalaxyA15 -k "system-images;android-36;default;x86_64" -d pixel_5
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\configure-galaxy-a15-avd.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\emulator\configure-galaxy-a15-avd.ps1
 ```
 
 Configuração global do emulador: o arquivo `%USERPROFILE%\.android\advancedFeatures.ini` desliga
@@ -330,7 +346,7 @@ adb shell dumpsys gfxinfo com.taskengine.mobile reset
 adb shell dumpsys gfxinfo com.taskengine.mobile
 ```
 
-Ou use `scripts\measure-performance.ps1`, que faz boot + install + launch + carga de UI e imprime
+Ou use `scripts\build\measure-performance.ps1`, que faz boot + install + launch + carga de UI e imprime
 `Janky frames` e os percentis 50/90/95/99.
 
 ### Pelo Android Studio
@@ -352,7 +368,7 @@ ajustes reversíveis:
 1. **Launcher** — [Lawnchair 15.0.0-beta3](https://github.com/LawnchairLauncher/lawnchair/releases)
    (open-source, APK oficial do GitHub) definido como home, com grid **4x6** (padrão do A15).
 2. **Wallpaper** — gradiente azul-noite/roxo/teal com blobs e grão, gerado por
-   `scripts\make-wallpaper.ps1` em `dist\tools\wallpaper-oneui.png` (prévia em
+   `scripts\appearance\make-wallpaper.ps1` em `dist\tools\wallpaper-oneui.png` (prévia em
    `docs/images/wallpaper.png`).
 
 Recriar a aparência:
@@ -376,7 +392,7 @@ O wallpaper **não** usa a galeria: o picker/cropper do AOSP desenha em `Surface
 derrubou o emulador (SwiftShader) duas vezes. O script roda um `app_process` como uid 1000
 (`su 1000,1000`) e chama `WallpaperManager.setStream` direto — por isso precisa de `adb root`, que
 só existe em imagem AOSP userdebug/emulador. O código está em
-`scripts\wallpaper\SetWallpaper.java`.
+`scripts\appearance\wallpaper\SetWallpaper.java`.
 
 Reverter para o AOSP:
 
@@ -401,7 +417,7 @@ O APK do emulador é `x86_64`. Para o aparelho físico (Galaxy A15) é preciso u
 npm run apk
 ```
 
-O `scripts/build-apk.ps1` roda `assembleRelease` com `-PreactNativeArchitectures=arm64-v8a`, embute o
+O `scripts/build/build-apk.ps1` roda `assembleRelease` com `-PreactNativeArchitectures=arm64-v8a`, embute o
 bundle JavaScript (não precisa de Metro) e copia o resultado para `dist\task-engine-arm64.apk`
 (≈19,4 MB; ~2,5 min no primeiro build). A assinatura usa `android\app\debug.keystore` — a mesma do
 template do React Native: serve para testar no aparelho, **não** para publicar na Play Store (para
@@ -446,7 +462,7 @@ npm run verify      # os três em sequência
 O workflow `.github/workflows/ci.yml` roda `npm ci`, `typecheck`, `lint` e `test` no GitHub Actions a
 cada push na `main` e em pull requests.
 
-O teste atual (`__tests__/App.test.tsx`) é um smoke test: renderiza o app e garante que nada quebra
+O teste atual (`src/__tests__/App.test.tsx`) é um smoke test: renderiza o app e garante que nada quebra
 na inicialização. A persistência é testada indiretamente pelo parse defensivo de `storage.ts`.
 
 ## Solução de problemas

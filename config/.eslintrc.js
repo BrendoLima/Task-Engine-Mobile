@@ -3,7 +3,7 @@ module.exports = {
   extends: '@react-native',
   overrides: [
     {
-      files: ['jest.setup.js'],
+      files: ['**/jest.setup.js'],
       env: {jest: true},
     },
   ],
