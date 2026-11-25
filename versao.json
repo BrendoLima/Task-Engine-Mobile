@@ -1,7 +1,7 @@
 {
     "data": "2026-11-25",
     "versao": "1.4.15",
-    "apk": "https://raw.githubusercontent.com/BrendoLima/Task-Engine-Mobile/main/dist/task-engine-v1.4.15-arm64-v8a.apk",
+    "apk": "https://raw.githubusercontent.com/BrendoLima/Task-Engine-Mobile/refs/heads/main/dist/task-engine-v1.4.15-arm64-v8a.apk",
     "tamanho": 35374401,
     "abi": "arm64-v8a",
     "notas": "## Novidades\n- Cards com 60 px, cantos arredondados, borda suave e trilha lateral de 3 px na cor da identidade, com cadência inspirada no Fluent da Microsoft.\n- Título e metadados em uma linha cada, ambos com reticências; concluídas menos apagadas e com título riscado.\n- O botão de adicionar filhos saiu do card: no Web ele fica no painel de detalhes e no mobile dentro do editor da tarefa.\n- O painel/editor agora lista os filhos com checkbox e permite criar novas etapas sem sair da tarefa pai.\n- Arraste no Web mantém o card opaco com sombra de elevação; mobile mantém swipe verde/vermelho, mão dominante e seleção por pressão longa.\n- Borda esquerda alinhada em todas as profundidades; filhos mais estreitos e checkbox recuando pelo padding interno.\n\n## Validação\n- `npm.cmd run verify` passou antes da publicação: testes shared, Web, mobile, typecheck, lint e build Web.\n- APK arm64-v8a, 35374401 bytes, SHA256: 3a196129bddf0ee0ce3c595cc0f0522e22fe7b1fed00c45795dceab1e5608ec0",
