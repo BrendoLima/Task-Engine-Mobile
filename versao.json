@@ -2,8 +2,8 @@
     "data": "2026-11-27",
     "versao": "1.4.16",
     "apk": "https://raw.githubusercontent.com/BrendoLima/Task-Engine-Mobile/refs/heads/main/dist/task-engine-v1.4.16-arm64-v8a.apk",
-    "tamanho": 35435389,
+    "tamanho": 35437037,
     "abi": "arm64-v8a",
-    "notas": "## Lista reformulada\n- Cards de projeto (azul com pasta, seta e total de descendentes), tarefa filha (grafite recuada com conector) e tarefa independente (verde).\n- Menu de tres pontinhos: duplicar subarvore, excluir, adicionar filha, renomear, filiar a... e desfiliar.\n- Modal unico com abas Filtros e Ordenacao; filtros, fila e aba ativa persistidos no dispositivo e espelhados no Firebase quando configurado.\n- Indicador de atividade/historico local e conclusao explicita de projeto no editor/detalhe.\n- Regras Firestore atualizadas para o documento users/{uid}/settings/lista.\n\n## Validacao\n- npm.cmd run verify verde: 147 testes shared, 200 Web, 295 mobile, typecheck, lint e build Web.\n- APK arm64-v8a, versionCode 24, 35435389 bytes.\n- SHA256: 4BD32940B2E946A24925B372C06E01B9E59CB500F830C61AF0CFC1AC373F4D39.",
+    "notas": "## Lista reformulada\n- Cards de projeto (azul com pasta, seta e total de descendentes), tarefa filha (grafite recuada com conector) e tarefa independente (verde).\n- Menu de tres pontinhos: duplicar subarvore, excluir, adicionar filha, renomear, filiar a... e desfiliar.\n- Modal unico com abas Filtros e Ordenacao; filtros, fila e aba ativa persistidos no dispositivo e espelhados no Firebase quando configurado.\n- Indicador de atividade/historico local e conclusao explicita de projeto no editor/detalhe.\n- Regras Firestore atualizadas para o documento users/{uid}/settings/lista.\n\n## Validacao\n- npm.cmd run verify verde: 147 testes shared, 200 Web, 296 mobile, typecheck, lint e build Web.\n- APK arm64-v8a, versionCode 24, 35437037 bytes.\n- SHA256: D77A3E4D223389AC9BA5216C78D9D18EF221A43D8379C6F80D2BDA997E01841D.",
     "codigo": 24
 }
