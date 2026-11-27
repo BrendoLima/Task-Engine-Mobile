@@ -1,9 +1,9 @@
 ﻿{
-    "data": "2026-11-25",
-    "versao": "1.4.15",
-    "apk": "https://raw.githubusercontent.com/BrendoLima/Task-Engine-Mobile/refs/heads/main/dist/task-engine-v1.4.15-arm64-v8a.apk",
-    "tamanho": 35391973,
+    "data": "2026-11-27",
+    "versao": "1.4.16",
+    "apk": "https://raw.githubusercontent.com/BrendoLima/Task-Engine-Mobile/refs/heads/main/dist/task-engine-v1.4.16-arm64-v8a.apk",
+    "tamanho": 35435389,
     "abi": "arm64-v8a",
-    "notas": "## Correção\n- Corrigido o fechamento ao abrir no Android: a elevação animada dos cards saiu do caminho de renderização.\n- O boot continua mesmo se uma leitura local falhar; datas de conclusão corrompidas deixam de quebrar a lista.\n- Configurações → Diagnóstico guarda eventos e erros no dispositivo com data, hora, evento anterior e seguinte. O relatório só é preparado após confirmação.\n\n## Validação\n- `npm.cmd run verify` passou antes da publicação: 134 testes shared, 178 Web, 281 mobile, typecheck, lint e build Web.\n- APK arm64-v8a, 35391973 bytes, SHA256: 7146d423f538759a9883cb94184143648fcd35c3a2baf697cb7831c8c87091a4.",
-    "codigo": 23
+    "notas": "## Lista reformulada\n- Cards de projeto (azul com pasta, seta e total de descendentes), tarefa filha (grafite recuada com conector) e tarefa independente (verde).\n- Menu de tres pontinhos: duplicar subarvore, excluir, adicionar filha, renomear, filiar a... e desfiliar.\n- Modal unico com abas Filtros e Ordenacao; filtros, fila e aba ativa persistidos no dispositivo e espelhados no Firebase quando configurado.\n- Indicador de atividade/historico local e conclusao explicita de projeto no editor/detalhe.\n- Regras Firestore atualizadas para o documento users/{uid}/settings/lista.\n\n## Validacao\n- npm.cmd run verify verde: 147 testes shared, 200 Web, 295 mobile, typecheck, lint e build Web.\n- APK arm64-v8a, versionCode 24, 35435389 bytes.\n- SHA256: 4BD32940B2E946A24925B372C06E01B9E59CB500F830C61AF0CFC1AC373F4D39.",
+    "codigo": 24
 }
